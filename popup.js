@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   increaseFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.fontSize = parseInt(window.getComputedStyle(document.body).fontSize) + 1 + 'px';",
+        code: "document.body.style.fontSize = parseInt(window.getComputedStyle(document.body).fontSize) + 2 + 'px';",
       });
     });
   });
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   decreaseFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.fontSize = parseInt(window.getComputedStyle(document.body).fontSize) - 1 + 'px';",
+        code: "document.body.style.fontSize = parseInt(window.getComputedStyle(document.body).fontSize) - 2 + 'px';",
       });
     });
   });
