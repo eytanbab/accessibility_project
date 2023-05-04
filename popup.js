@@ -21,6 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
   var resetFontButton = document.getElementById('reset-font');
 
   /**
+   * Gets the HTML button element with the ID "increase-contrast" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
+  var increaseContrastButton = document.getElementById('increase-contrast');
+
+  /**
+   * Gets the HTML button element with the ID "reset-contrast" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
+  var resetContrastButton = document.getElementById('reset-contrast');
+
+  /**
    * Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
    */
   increaseFontButton.addEventListener('click', function () {
@@ -49,6 +61,30 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
         code: "document.body.style.fontSize = '';",
+      });
+    });
+  });
+
+  /**
+   * Adds a click event listener to the "reset-font" button that resets the font size of the active tab's body to its default size.
+   */
+  increaseContrastButton.addEventListener('click', function () {
+    // new event listener
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: "document.body.style.filter = 'contrast(150%)';", // increase contrast
+      });
+    });
+  });
+
+  /**
+   * Adds a click event listener to the "reset-font" button that resets the font size of the active tab's body to its default size.
+   */
+  resetContrastButton.addEventListener('click', function () {
+    // new event listener
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: "document.body.style.filter = 'contrast(100%)';", // increase contrast
       });
     });
   });
