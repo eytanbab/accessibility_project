@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   var resetContrastButton = document.getElementById('reset-contrast');
 
+  var Grayscale = document.getElementById('grayscale');
+
+  var resetGrayscale = document.getElementById('reset-grayscale');
+
   /**
    * Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
    */
@@ -85,6 +89,24 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
         code: "document.body.style.filter = 'contrast(100%)';", // increase contrast
+      });
+    });
+  });
+
+  Grayscale.addEventListener('click', function () {
+    // new event listener
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: "document.body.style.filter = 'grayscale(1)';", // add grayscale
+      });
+    });
+  });
+
+  resetGrayscale.addEventListener('click', function () {
+    // new event listener
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: "document.body.style.filter = 'grayscale(0%)';", // reset grayscale
       });
     });
   });
