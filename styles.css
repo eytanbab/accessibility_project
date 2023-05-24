@@ -3,7 +3,7 @@ body {
   min-height: 100px;
   padding: 4px;
   display: grid;
-  gap: 6px;
+  gap: 10px;
   justify-items: center;
   grid-template-columns: 1fr 1fr;
 }
@@ -11,4 +11,11 @@ body {
 button {
   font-weight: bold;
   width: 80%;
+  min-height: 40px;
+}
+
+#reset-font {
+  grid-column: 2;
+  grid-row-start: 1;
+  grid-row-end: 5;
 }
