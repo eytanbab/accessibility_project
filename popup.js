@@ -32,9 +32,29 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   var resetContrastButton = document.getElementById('reset-contrast');
 
+  /**
+   * Gets the HTML button element with the ID "grayscale" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
   var Grayscale = document.getElementById('grayscale');
 
+  /**
+   * Gets the HTML button element with the ID "reset-grayscale" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
   var resetGrayscale = document.getElementById('reset-grayscale');
+
+  /**
+   * Gets the HTML button element with the ID "speak" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
+  var speakButton = document.getElementById('speak');
+
+  /**
+   * Gets the HTML button element with the ID "stop-speak" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
+  var stopSpeakButton = document.getElementById('stop-speak');
 
   /**
    * Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
@@ -107,6 +127,24 @@ document.addEventListener('DOMContentLoaded', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
         code: "document.body.style.filter = 'grayscale(0%)';", // reset grayscale
+      });
+    });
+  });
+
+  speakButton.addEventListener('click', function () {
+    // new event listener
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: 'var speechSynthesisUtterance = new SpeechSynthesisUtterance(); speechSynthesisUtterance.text = document.body.innerText; speechSynthesis.speak(speechSynthesisUtterance);',
+      });
+    });
+  });
+
+  stopSpeakButton.addEventListener('click', function () {
+    // new event listener
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: 'speechSynthesis.cancel();',
       });
     });
   });
