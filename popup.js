@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var stopSpeakButton = document.getElementById('stop-speak');
 
   /**
-   * Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
+   * Adds a click event listener to the "bold-font" button that makes the font of the active tab's body bold.
    */
   boldFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -124,19 +124,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /**
-   * Adds a click event listener to the "reset-font" button that resets the font size of the active tab's body to its default size.
+   * Adds a click event listener to the "increase-contrast" button that increases the contrast of the active tab's body.
    */
   increaseContrastButton.addEventListener('click', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.filter = 'contrast(150%)';", // increase contrast
+        code: "document.body.style.filter = 'contrast(130%)';", // increase contrast
       });
     });
   });
 
   /**
-   * Adds a click event listener to the "reset-font" button that resets the font size of the active tab's body to its default size.
+   * Adds a click event listener to the "reset-contrast" button that resets the contrast of the active tab's body to its default.
    */
   resetContrastButton.addEventListener('click', function () {
     // new event listener
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.filter = 'grayscale(1)';", // add grayscale
+        code: "document.body.style.filter = 'grayscale(1) contrast(130%)';", // add grayscale
       });
     });
   });
