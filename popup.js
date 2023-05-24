@@ -2,75 +2,40 @@
  * Executes the code inside the event listener when the DOM content is loaded.
  */
 document.addEventListener('DOMContentLoaded', function () {
-  /**
-   * Gets the HTML button element with the ID "bold-font" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "bold-font" and assigns it to a variable.
   var boldFontButton = document.getElementById('bold-font');
 
-  /**
-   * Gets the HTML button element with the ID "change-font" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "change-font" and assigns it to a variable.
   var changeFontButton = document.getElementById('change-font');
 
-  /**
-   * Gets the HTML button element with the ID "increase-font" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "increase-font" and assigns it to a variable.
   var increaseFontButton = document.getElementById('increase-font');
 
-  /**
-   * Gets the HTML button element with the ID "decrease-font" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "decrease-font" and assigns it to a variable.
   var decreaseFontButton = document.getElementById('decrease-font');
 
-  /**
-   * Gets the HTML button element with the ID "reset-font" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "reset-font" and assigns it to a variable.
   var resetFontButton = document.getElementById('reset-font');
 
-  /**
-   * Gets the HTML button element with the ID "increase-contrast" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "increase-contrast" and assigns it to a variable.
   var increaseContrastButton = document.getElementById('increase-contrast');
 
-  /**
-   * Gets the HTML button element with the ID "reset-contrast" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "reset-contrast" and assigns it to a variable.
   var resetContrastButton = document.getElementById('reset-contrast');
 
-  /**
-   * Gets the HTML button element with the ID "grayscale" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
-  var Grayscale = document.getElementById('grayscale');
+  // Gets the HTML button element with the ID "grayscale" and assigns it to a variable.
+  var grayscaleButton = document.getElementById('grayscale');
 
-  /**
-   * Gets the HTML button element with the ID "reset-grayscale" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
-  var resetGrayscale = document.getElementById('reset-grayscale');
+  // Gets the HTML button element with the ID "reset-grayscale" and assigns it to a variable.
+  var resetGrayscaleButton = document.getElementById('reset-grayscale');
 
-  /**
-   * Gets the HTML button element with the ID "speak" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "speak" and assigns it to a variable.
   var speakButton = document.getElementById('speak');
 
-  /**
-   * Gets the HTML button element with the ID "stop-speak" and assigns it to a variable.
-   * @type {HTMLElement}
-   */
+  // Gets the HTML button element with the ID "stop-speak" and assigns it to a variable.
   var stopSpeakButton = document.getElementById('stop-speak');
 
-  /**
-   * Adds a click event listener to the "bold-font" button that makes the font of the active tab's body bold.
-   */
+  // Adds a click event listener to the "bold-font" button that makes the font of the active tab's body bold.
   boldFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
@@ -79,9 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /**
-   * Adds a click event listener to the "change-font" button that changes the font to Arial.
-   */
+  // Adds a click event listener to the "change-font" button that changes the font to Arial.
   changeFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
@@ -90,9 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /**
-   * Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
-   */
+  // Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
   increaseFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
@@ -101,9 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /**
-   * Adds a click event listener to the "decrease-font" button that decreases the font size of the active tab's body by 2px.
-   */
+  // Adds a click event listener to the "decrease-font" button that decreases the font size of the active tab's body by 2px.
   decreaseFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
@@ -112,9 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /**
-   * Adds a click event listener to the "reset-font" button that resets the font size of the active tab's body to its default size.
-   */
+  // Adds a click event listener to the "reset-font" button that resets the font size of the active tab's body to its default size.
   resetFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
@@ -123,59 +80,44 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /**
-   * Adds a click event listener to the "increase-contrast" button that increases the contrast of the active tab's body.
-   */
+  // Adds a click event listener to the "increase-contrast" button that increases the contrast of the active tab's body.
   increaseContrastButton.addEventListener('click', function () {
-    // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.filter = 'contrast(130%)';", // increase contrast
+        code: "document.body.style.filter = 'contrast(130%)';", // Increase contrast
       });
     });
   });
 
-  /**
-   * Adds a click event listener to the "reset-contrast" button that resets the contrast of the active tab's body to its default.
-   */
+  // Adds a click event listener to the "reset-contrast" button that resets the contrast of the active tab's body to its default.
   resetContrastButton.addEventListener('click', function () {
-    // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.filter = 'contrast(100%)';", // increase contrast
+        code: "document.body.style.filter = 'contrast(100%)';", // Reset contrast
       });
     });
   });
 
-  /**
-   * Adds a click event listener to the "grayscale" button that makes the active tab's body grayscale.
-   */
-  Grayscale.addEventListener('click', function () {
-    // new event listener
+  // Adds a click event listener to the "grayscale" button that makes the active tab's body grayscale.
+  grayscaleButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.filter = 'grayscale(1) contrast(130%)';", // add grayscale
+        code: "document.body.style.filter = 'grayscale(1) contrast(130%)';", // Add grayscale
       });
     });
   });
 
-  /**
-   * Adds a click event listener to the "reset-grayscale" button that resets the grayscale filter of the active tab's body to its default.
-   */
-  resetGrayscale.addEventListener('click', function () {
-    // new event listener
+  // Adds a click event listener to the "reset-grayscale" button that resets the grayscale filter of the active tab's body to its default.
+  resetGrayscaleButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.filter = 'grayscale(0%)';", // reset grayscale
+        code: "document.body.style.filter = 'grayscale(0%)';", // Reset grayscale
       });
     });
   });
 
-  /**
-   * Adds a click event listener to the "speak" button that reads out loud the selected next in the active tab's body.
-   */
+  // Adds a click event listener to the "speak" button that reads out loud the selected text in the active tab's body.
   speakButton.addEventListener('click', function () {
-    // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
         code: `
@@ -191,11 +133,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /**
-   * Adds a click event listener to the "stop-speak" button that stops the text-to-speech in the active tab's body.
-   */
+  // Adds a click event listener to the "stop-speak" button that stops the text-to-speech in the active tab's body.
   stopSpeakButton.addEventListener('click', function () {
-    // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
         code: 'speechSynthesis.cancel();',
