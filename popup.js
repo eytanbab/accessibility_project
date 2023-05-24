@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var boldFontButton = document.getElementById('bold-font');
 
   /**
+   * Gets the HTML button element with the ID "change-font" and assigns it to a variable.
+   * @type {HTMLElement}
+   */
+  var changeFontButton = document.getElementById('change-font');
+
+  /**
    * Gets the HTML button element with the ID "increase-font" and assigns it to a variable.
    * @type {HTMLElement}
    */
@@ -74,6 +80,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /**
+   * Adds a click event listener to the "change-font" button that changes the font to Arial.
+   */
+  changeFontButton.addEventListener('click', function () {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.executeScript(tabs[0].id, {
+        code: "document.body.style.fontFamily = 'Arial';",
+      });
+    });
+  });
+
+  /**
    * Adds a click event listener to the "increase-font" button that increases the font size of the active tab's body by 2px.
    */
   increaseFontButton.addEventListener('click', function () {
@@ -101,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
   resetFontButton.addEventListener('click', function () {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: "document.body.style.fontSize = ''; document.body.style.fontWeight = '';",
+        code: "document.body.style.fontSize = ''; document.body.style.fontWeight = ''; document.body.style.fontFamily = '';",
       });
     });
   });
