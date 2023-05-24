@@ -169,7 +169,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.executeScript(tabs[0].id, {
-        code: 'var speechSynthesisUtterance = new SpeechSynthesisUtterance(); speechSynthesisUtterance.text = document.body.innerText; speechSynthesis.speak(speechSynthesisUtterance);',
+        code: `
+        var selection = window.getSelection().toString();
+        if (selection) {
+          var speechSynthesisUtterance = new SpeechSynthesisUtterance();
+          speechSynthesisUtterance.text = selection;
+          speechSynthesisUtterance.lang = 'he-IL'; // Set language to Hebrew (Israel)
+          speechSynthesis.speak(speechSynthesisUtterance);
+        }
+      `,
       });
     });
   });
