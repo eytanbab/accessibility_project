@@ -147,6 +147,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /**
+   * Adds a click event listener to the "grayscale" button that makes the active tab's body grayscale.
+   */
   Grayscale.addEventListener('click', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -156,6 +159,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /**
+   * Adds a click event listener to the "reset-grayscale" button that resets the grayscale filter of the active tab's body to its default.
+   */
   resetGrayscale.addEventListener('click', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -165,6 +171,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /**
+   * Adds a click event listener to the "speak" button that reads out loud the selected next in the active tab's body.
+   */
   speakButton.addEventListener('click', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -182,6 +191,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /**
+   * Adds a click event listener to the "stop-speak" button that stops the text-to-speech in the active tab's body.
+   */
   stopSpeakButton.addEventListener('click', function () {
     // new event listener
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
